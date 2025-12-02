@@ -5,7 +5,11 @@ import { store } from "./store.js";
 export default function RootLayout() {
   return (
     <Provider store={store}>
-      <Stack />
+      <Stack
+        screenOptions={{
+          headerShown: false,
+        }}
+      />
     </Provider>
   );
 }
