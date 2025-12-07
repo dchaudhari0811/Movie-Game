@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  movies: [], 
+  movies: [],
 };
 
 const movieSlice = createSlice({
@@ -9,11 +9,15 @@ const movieSlice = createSlice({
   initialState,
   reducers: {
     addMovie: (state, action) => {
+      if (state.movies.length > 0) {
+        state.movies.pop();
+      }
       const newMovie = {
         id: state.movies.length > 0 ? state.movies[state.movies.length - 1].id + 1 : 1,
-        title: action.payload.title,        
-        description: action.payload.description, 
+        title: action.payload.title,
+        description: action.payload.description,
       };
+
       state.movies.push(newMovie);
     },
 
